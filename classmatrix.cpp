@@ -18,9 +18,9 @@ public:
 	{
 		for (i = 0; i < r; i++)
 		{
-			delete A[i];
+			delete[] A[i];
 		}
-		delete A;
+		delete[] A;
 		cout << "\nDest";
 	}
 	void Read()
@@ -55,7 +55,7 @@ public:
 			cout << "\n\nCannot add matrices";
 	}
 
-	/*Matrix prdct(Matrix z)
+	Matrix prdct(Matrix z)
 	{
 		if(c==z.r)
 		{
@@ -74,7 +74,7 @@ public:
 		else
 			cout<<"\n\nCannot multiply matrices";
 	}
-protected:*/
+protected:
 // Protected Declarations
 };
 int main()
@@ -93,7 +93,7 @@ int main()
 	A.Print();
 	cout << "\n\nMatrix B\n";
 	B.Print();
-	//A.sum(B);
-	//A.prdct(B);
+	A.sum(B);
+	A.prdct(B);
 	return 0;
 }
