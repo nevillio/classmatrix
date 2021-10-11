@@ -93,7 +93,11 @@ int main()
 	A.Print();
 	cout << "\nMatrix B\n";
 	B.Print();
-	A.sum(B);
+	/*if (m==p && n==q)
+	{
+		A.sum(B);
+
+	}*/
 	A.prdct(B);
 	return 0;
 }

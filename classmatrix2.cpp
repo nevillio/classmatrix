@@ -3,7 +3,7 @@ using namespace std;
 int i, j;
 class Matrix {
 	// Private section
-	int **A, r, c;
+	int r, c, ** A;
 public:
 	// Public Declarations
 	Matrix(int a, int b)
@@ -16,11 +16,11 @@ public:
 	}
 	~Matrix()
 	{
-		for ( i = 0; i < r; i++)
+		for (i = 0; i < r; i++)
 		{
-			delete A[i];
+			delete[] A[i];
 		}
-		delete A;
+		delete[] A;
 		cout << "\nDest";
 	}
 	void Read()
@@ -34,11 +34,11 @@ public:
 	void Print()
 	{
 		for (i = 0; i < r; i++) {
-
+			if (i > 0)
+				cout << "\n";
 			for (j = 0; j < c; j++) {
 				cout << A[i][j] << " ";
 			}
-			cout << "\n";
 		}
 	}
 	void sum(Matrix z)
@@ -47,15 +47,15 @@ public:
 		{
 			for (i = 0; i < r; i++)
 				for (j = 0; j < c; j++)
-					A[i][j] += z.A[i][j];
+					z.A[i][j] += A[i][j];
 			cout << "\nSum Matrix\n";
-			Print();
+			z.Print();
 		}
 		else
 			cout << "\n\nCannot add matrices";
 	}
 
-	void prdct(Matrix z)
+	Matrix prdct(Matrix z)
 	{
 		if (c == z.r)
 		{
@@ -75,7 +75,7 @@ public:
 			cout << "\n\nCannot multiply matrices";
 	}
 protected:
- /*Protected Declarations*/
+	// Protected Declarations
 };
 int main()
 {
@@ -91,7 +91,7 @@ int main()
 	B.Read();
 	cout << "\nMatrix A\n";
 	A.Print();
-	cout << "\nMatrix B\n";
+	cout << "\n\nMatrix B\n";
 	B.Print();
 	A.sum(B);
 	A.prdct(B);
